@@ -5,7 +5,7 @@
  */
 package Telas;
 
-import conections.conexao;
+
 
 
 /**
@@ -121,7 +121,7 @@ public class tela_inicio extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // abrir tela inicial se o login estiver correto
-        conexao.getconexao();
+     
         
         
         tela_options tela_escolhas = new tela_options();
