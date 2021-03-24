@@ -5,6 +5,9 @@
  */
 package Telas;
 
+import connection.Cadastro;
+
+
 /**
  *
  * @author endot
@@ -89,10 +92,11 @@ public class tela_nova_entrega extends javax.swing.JFrame {
             }
         });
 
-        combox_cidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combox_cidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atibaia", "Bragança Paulista", "Bom Jesus dos Perdões", "Piracaia" }));
         combox_cidade.setToolTipText("");
 
-        combox_bairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combox_bairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alpes Atibaia", "Alto Boa Vista", "Alvinópolis", "Atibaia Belvedere", "Atibaia Jardim", "Atibaia Vista da Montanha", "Alpes Atibaia", "Alto Boa Vista", "Alvinópolis", "Atibaia Belvedere", "Atibaia Jardim", "Atibaia Vista da Montanha", "Bocaina", "Brotas", "Caetetuba", "Campos de Atibaia", "Casas Populares", "Centro", "Chácara da Colina", "Chácara Fernão Dias", "Chácara Maringá", "Chácara Parque São Pedro", "Chanceler Nova Ruhr", "Chs Fernão Dias", "Chs Maringá", "Cidade Satélite", "Condomínio Parque das Garças I", "Condomínio Residencial Pedra Grande", "Conjunto Habitacional José Barnet Y Vives", "Conjunto Habitacional São José", "Ctb", "Estância Lituanika", "Estância Parque de Atibaia", "Estância San Remo", "Estância Santa Maria do Laranjal", "Estância Santa Maria do Portão", "Estância Santa Maria Laranjal", "Estância Santa Maria Portão", "Guaxinduva", "Iara", "Itapetinga", "Itapetininga", "Jardim Alvinópolis", "Jardim Alvinópolis Ii", "Jardim América", "Jardim Brasil", "Jardim Brogota", "Jardim Centenário", "Jardim Cerejeiras", "Jardim Colonial", "Jardim das Cerejeiras", "Jardim das Flores", "Jardim das Palmeiras", "Jardim do Lago", "Jardim do Trevo", "Jardim dos Pinheiros", "Jardim Eneide", "Jardim Estância Brasil", "Jardim Flamboyant-b", "Jardim Floresta", "Jardim Imperador", "Jardim Imperial", "Jardim Ipe", "Jardim Itaperi", "Jardim Jaraguá", "Jardim Kanimar", "Jardim Lago", "Jardim Maracanã", "Jardim Maristela", "Jardim Maristela II", "Jardim Pacaembu", "Jardim Paraíso da Usina", "Jardim Paraíso do Tanque", "Jardim Paraíso Tanque", "Jardim Parque Real Atibaia", "Jardim Paulista", "Jardim Pinheiros", "Jardim Planalto do Tanque", "Jardim Residencial Santa Luíza", "Jardim Roseli", "Jardim Santa Bárbara", "Jardim Santo Antônio", "Jardim São Bento do Tanque", "Jardim São Felipe", "Jardim Shangri-lá", "Jardim Siriema", "Jardim Sueli", "Jardim Suely", "Jardim Suíça", "Jardim Tapajós", "Jardim Terceiro Centenário", "Jardim Trevo", "Loteamento Loanda", "Loteamento Retiro Recanto Tranquilo", "Loteamento Vale das Flores", "Maracanã", "Marmeleiro", "Mato Dentro", "Nova Cerejeira", "Nova Gardênia", "Panorama Parque Residencial", "Parque Arco Íris", "Parque da Represa", "Parque das Nações", "Parque dos Coqueiros", "Parque Fernão Dias", "Parque Garças", "Parque Nações", "Parque Residencial Itaguaçu", "Parque Rio Abaixo", "Pinheiral I", "Pinheiral II", "Planalto Atibaia", "Ponte", "Ponte Alta", "Portão", "Recanto Palmares", "Recreio Estoril", "Recreio Maristela", "Recreio São Vicente", "Refúgio", "Ressaca", "Retiro das Fontes", "Ribeirão dos Porcos", "Ribeirão Porcos", "Rio Abaixo", "Rio Acima", "Rosário", "Samambaia Parque Residencial", "San Fernando Valley", "Sul Brasil", "Tanque", "Vila Boa Esperança", "Vila Carvalho", "Vila Dom Pedro", "Vila dos Netos", "Vila Esperança", "Vila Esperia Ou Giglio", "Vila Gardênia", "Vila Helena", "Vila Imperial Dom Pedro", "Vila Junqueira", "Vila Loanda", "Vila Maria", "Vila Mira", "Vila Petrópolis", "Vila Rica", "Vila Salles", "Vila Santa Clara", "Vila Santa Helena", "Vila Santista", "Vila Santo Antônio", "Vila Silva", "Vila Thaís", "Vitória Régia" }));
+        combox_bairro.setSelectedIndex(-1);
 
         combox_UF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -173,7 +177,7 @@ public class tela_nova_entrega extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jRadioButton1)
                                 .addComponent(jRadioButton2)))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +247,26 @@ public class tela_nova_entrega extends javax.swing.JFrame {
 
     private void btn_cad_entActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cad_entActionPerformed
         // TODO add your handling code here:
+        String cliente, endereco, numero, cidade, bairro, uf, valor, telefone, cpf, distancia, frete, data;
+        
+        cliente = campo_cliente.getText();
+        endereco = campo_endereco.getText();
+        numero = campo_numero.getText();
+        cidade = combox_cidade.getSelectedItem().toString();
+        bairro = combox_bairro.getSelectedItem().toString();
+        uf = combox_UF.getSelectedItem().toString();
+        valor = campo_valor.getText();
+        telefone = campo_telefone.getText();
+        cpf = campo_CPF.getText();
+        distancia = "2.0";
+        frete = "4,00";
+        data = "23/03/2021";
+        
+        
+        Cadastro cad = new Cadastro(cliente, endereco, numero, cidade, bairro, uf ,valor ,telefone, cpf, distancia, frete, data);
+        
+        //System.out.println(cliente + endereco + numero + cidade + bairro + uf + valor + telefone + cpf);
+        
         tela_outra_entrega deseja_outra = new tela_outra_entrega();
         deseja_outra.setVisible(true);
         dispose();
