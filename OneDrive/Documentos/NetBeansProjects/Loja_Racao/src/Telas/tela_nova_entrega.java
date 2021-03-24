@@ -6,6 +6,11 @@
 package Telas;
 
 import connection.Cadastro;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 
 /**
@@ -247,7 +252,7 @@ public class tela_nova_entrega extends javax.swing.JFrame {
 
     private void btn_cad_entActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cad_entActionPerformed
         // TODO add your handling code here:
-        String cliente, endereco, numero, cidade, bairro, uf, valor, telefone, cpf, distancia, frete, data;
+        String cliente, endereco, numero, cidade, bairro, uf, valor, telefone, cpf, distancia, frete, strDate;
         
         cliente = campo_cliente.getText();
         endereco = campo_endereco.getText();
@@ -260,10 +265,14 @@ public class tela_nova_entrega extends javax.swing.JFrame {
         cpf = campo_CPF.getText();
         distancia = "2.0";
         frete = "4,00";
-        data = "23/03/2021";
+       
         
+        java.util.Date date = Calendar.getInstance().getTime();  
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+        strDate = formatter.format(date);  
+        System.out.println(strDate);  
         
-        Cadastro cad = new Cadastro(cliente, endereco, numero, cidade, bairro, uf ,valor ,telefone, cpf, distancia, frete, data);
+        Cadastro cad = new Cadastro(cliente, endereco, numero, cidade, bairro, uf ,valor ,telefone, cpf, distancia, frete, strDate);
         
         //System.out.println(cliente + endereco + numero + cidade + bairro + uf + valor + telefone + cpf);
         
