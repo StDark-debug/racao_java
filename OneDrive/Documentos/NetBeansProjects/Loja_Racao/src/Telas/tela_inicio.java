@@ -5,7 +5,9 @@
  */
 package Telas;
 
-
+import connection.cmd_login;
+import static connection.cmd_login.cmd_login;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -18,6 +20,7 @@ public class tela_inicio extends javax.swing.JFrame {
      * Creates new form tela_inicio
      */
     public tela_inicio() {
+        
         initComponents();
     }
 
@@ -39,6 +42,7 @@ public class tela_inicio extends javax.swing.JFrame {
         lbl_senha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +62,13 @@ public class tela_inicio extends javax.swing.JFrame {
         txt_title.setText("Sistema de Entregas");
 
         cx_login.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cx_login.setText("1111");
+        cx_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cx_loginActionPerformed(evt);
+            }
+        });
+
+        cx_user.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lbl_user.setText("Usuário:");
 
@@ -112,6 +122,7 @@ public class tela_inicio extends javax.swing.JFrame {
         cx_user.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
@@ -121,14 +132,28 @@ public class tela_inicio extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // abrir tela inicial se o login estiver correto
-     
+        String login = cx_user.getText();
+        int senha = Integer.parseInt(cx_login.getText());
+      
+        
+        //cmd_login exis = new cmd_login(login, senha);
+        boolean exist = cmd_login(login, senha);
         
         
+        if (exist == true){
+             JOptionPane.showMessageDialog(null,"Sucesso!");
         tela_options tela_escolhas = new tela_options();
         tela_escolhas.setVisible(true);
         dispose();
+        }else{
+            JOptionPane.showMessageDialog(null,"Usuário ou senha estão incorretos!");
+        }
        
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void cx_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cx_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cx_loginActionPerformed
 
     /**
      * @param args the command line arguments
